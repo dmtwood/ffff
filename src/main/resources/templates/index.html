@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Frituur Frida</title>
+    <head th:replace="fragments::head(title='Sauzen')"></head>
+</head>
+<body>
+
+<nav th:replace="fragments::menu"></nav>
+
+<div th:if="${reedsBezocht}">Welkom terug.</div>
+
+
+<h1>Vandaag zijn we <span th:text="${openGesloten}"></span></h1>
+
+<h2>Ons adres </h2>
+<div th:object="${adres}"
+     th:text="|*{straat} *{huisNr} *{gemeente.postcode} *{gemeente.naam}|"></div>
+
+<div th:if="${param.snackNietGevonden} != null" class="fout">Snack
+    <span th:text="${param.snackNietGevonden}"></span> niet gevonden</div>
+
+
+</body>
+</html>
